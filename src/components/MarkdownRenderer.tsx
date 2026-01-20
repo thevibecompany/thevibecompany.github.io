@@ -7,21 +7,19 @@ import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import Prism from 'prismjs'
 
-// Prism 일부 컴포넌트가 extend를 undefined로 호출하는 상황을 방지하는 패치
-const originalExtend = Prism.languages.extend.bind(Prism.languages)
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-Prism.languages.extend = (id: string, redef?: any) => {
-  if (!redef) return Prism.languages[id] ?? {}
-  return originalExtend(id, redef)
-}
-
-import 'prismjs/components/prism-javascript'
-import 'prismjs/components/prism-typescript'
-import 'prismjs/components/prism-tsx'
-import 'prismjs/components/prism-jsx'
-import 'prismjs/components/prism-bash'
-import 'prismjs/components/prism-json'
-import 'prismjs/components/prism-markdown'
+// Prism 언어 의존성을 순서대로 비동기 로드 (실행 시 동일한 Promise 공유)
+export const prismReady = (async () => {
+  await import('prismjs/components/prism-markup')
+  await import('prismjs/components/prism-markup-templating')
+  await import('prismjs/components/prism-clike')
+  await import('prismjs/components/prism-javascript')
+  await import('prismjs/components/prism-typescript')
+  await import('prismjs/components/prism-jsx')
+  await import('prismjs/components/prism-tsx')
+  await import('prismjs/components/prism-bash')
+  await import('prismjs/components/prism-json')
+  await import('prismjs/components/prism-markdown')
+})()
 
 type CodeProps = {
   inline?: boolean

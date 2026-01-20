@@ -3,7 +3,7 @@
   <channel>
     <title>The Vibe Company — Blog</title>
     <link>https://thevibecompany.github.io</link>
-    <description>Personal blog powered by React & Markdown</description>
+    <description>Personal blog powered by React &amp; Markdown</description>
     <item>
       <title>Vibe 시작하기</title>
       <link>https://thevibecompany.github.io/posts/hello-world</link>

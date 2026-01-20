@@ -64,9 +64,9 @@ const buildRss = (posts) => {
   return `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
-    <title>The Vibe Company — Blog</title>
+    <title>${escapeXml('The Vibe Company — Blog')}</title>
     <link>${siteUrl}</link>
-    <description>Personal blog powered by React & Markdown</description>
+    <description>${escapeXml('Personal blog powered by React & Markdown')}</description>
 ${items}
   </channel>
 </rss>

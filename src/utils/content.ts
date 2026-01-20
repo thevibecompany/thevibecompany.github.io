@@ -1,5 +1,3 @@
-import matter from 'gray-matter'
-
 import manifestData from '../data/manifest.json'
 import type { Post, PostMeta } from '../types'
 
@@ -9,6 +7,13 @@ const contentFiles = import.meta.glob('/src/content/**/*.md', {
 })
 
 export const posts: PostMeta[] = manifestData
+
+const stripFrontmatter = (raw: string) => {
+  if (!raw.startsWith('---')) return raw
+  const end = raw.indexOf('\n---', 3)
+  if (end === -1) return raw
+  return raw.slice(end + 4)
+}
 
 export const getTags = () => {
   const tagCount = new Map<string, number>()
@@ -27,13 +32,11 @@ export const loadPostContent = async (slug: string): Promise<Post | null> => {
   const meta = posts.find((post) => post.slug === slug)
   if (!meta) return null
 
-  const raw = await contentFiles[meta.source]?.()
+  const raw = (await contentFiles[meta.source]?.()) as string | undefined
   if (!raw) return null
-
-  const parsed = matter(raw)
 
   return {
     ...meta,
-    content: parsed.content.trim(),
+    content: stripFrontmatter(raw).trim(),
   }
 }
