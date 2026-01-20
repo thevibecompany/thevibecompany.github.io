@@ -44,23 +44,30 @@ const Home = () => {
   }
 
   return (
-    <div className="page">
+    <div className="page home-shell">
       <MetaHead title="홈" description="Markdown 기반 개인 블로그" />
-      <section className="hero">
+
+      <section className="home-hero">
         <p className="eyebrow">Personal Blog</p>
         <h1>Vibe에 담는 글들</h1>
         <p className="lede">
           생각과 실험을 기록하는 공간. Markdown으로 작성하고 GitHub Pages로 배포합니다.
         </p>
         <SearchBar query={query} onChange={updateQuery} placeholder="제목, 태그, 내용을 검색" />
-        <TagCloud tags={getTags()} activeTag={activeTag || null} onSelect={updateTag} />
       </section>
 
-      <section className="post-grid">
-        {filtered.length === 0 && <div className="empty-state">검색 결과가 없습니다.</div>}
-        {filtered.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
+      <section className="home-content">
+        <div className="home-main">
+          <div className="post-grid">
+            {filtered.length === 0 && <div className="empty-state">검색 결과가 없습니다.</div>}
+            {filtered.map((post) => (
+              <PostCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </div>
+        <aside className="home-tags">
+          <TagCloud tags={getTags()} activeTag={activeTag || null} onSelect={updateTag} />
+        </aside>
       </section>
     </div>
   )

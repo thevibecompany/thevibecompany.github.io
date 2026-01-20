@@ -31,9 +31,20 @@ type Props = {
   content: string
 }
 
-const CodeBlock = ({ className, children }: CodeProps) => {
+const CodeBlock = ({ inline, className, children }: CodeProps) => {
   const language = className?.replace('language-', '') ?? ''
   const code = String(children ?? '').trim()
+
+  if (inline) {
+    return <code className="md-inline-code">{code}</code>
+  }
+
+  const hasLanguage = Boolean(language)
+  const hasNewline = code.includes('\n')
+  // fallback: if no language and no newline, treat as inline to avoid block code for short spans
+  if (!hasLanguage && !hasNewline) {
+    return <code className="md-inline-code">{code}</code>
+  }
 
   if (language && Prism.languages[language]) {
     const html = Prism.highlight(code, Prism.languages[language], language)
