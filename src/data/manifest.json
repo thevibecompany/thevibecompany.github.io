@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "hello-world",
+    "title": "Vibe 시작하기",
+    "date": "2025-01-10T00:00:00.000Z",
+    "tags": [
+      "intro",
+      "vibe"
+    ],
+    "excerpt": "더 가벼운 블로그 워크플로우를 위한 첫 인사와 방향성.",
+    "cover": "",
+    "readingMinutes": 1,
+    "readingWords": 67,
+    "source": "/src/content/2025/hello-world.md"
+  },
+  {
+    "slug": "design-notes",
+    "title": "디자인 톤 & 무드 노트",
+    "date": "2024-12-02T00:00:00.000Z",
+    "tags": [
+      "design",
+      "theme"
+    ],
+    "excerpt": "블로그의 타이포그래피, 색상, 여백 전략을 정리한 노트입니다.",
+    "cover": "",
+    "readingMinutes": 1,
+    "readingWords": 58,
+    "source": "/src/content/2024/design-notes.md"
+  }
+]

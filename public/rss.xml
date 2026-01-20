@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>The Vibe Company — Blog</title>
+    <link>https://thevibecompany.github.io</link>
+    <description>Personal blog powered by React & Markdown</description>
+    <item>
+      <title>Vibe 시작하기</title>
+      <link>https://thevibecompany.github.io/posts/hello-world</link>
+      <guid>https://thevibecompany.github.io/posts/hello-world</guid>
+      <pubDate>Fri, 10 Jan 2025 00:00:00 GMT</pubDate>
+      <description>더 가벼운 블로그 워크플로우를 위한 첫 인사와 방향성.</description>
+    </item>
+    <item>
+      <title>디자인 톤 &amp; 무드 노트</title>
+      <link>https://thevibecompany.github.io/posts/design-notes</link>
+      <guid>https://thevibecompany.github.io/posts/design-notes</guid>
+      <pubDate>Mon, 02 Dec 2024 00:00:00 GMT</pubDate>
+      <description>블로그의 타이포그래피, 색상, 여백 전략을 정리한 노트입니다.</description>
+    </item>
+  </channel>
+</rss>
