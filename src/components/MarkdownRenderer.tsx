@@ -7,6 +7,14 @@ import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import Prism from 'prismjs'
 
+// Prism 일부 컴포넌트가 extend를 undefined로 호출하는 상황을 방지하는 패치
+const originalExtend = Prism.languages.extend.bind(Prism.languages)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+Prism.languages.extend = (id: string, redef?: any) => {
+  if (!redef) return Prism.languages[id] ?? {}
+  return originalExtend(id, redef)
+}
+
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-typescript'
 import 'prismjs/components/prism-tsx'
